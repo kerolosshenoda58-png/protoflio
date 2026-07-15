@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '\u{1F49C} by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerolos Shenoda — Growth Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--lime:oklch(75% 0.2 135);--lime-soft:oklch(95% 0.05 135);--lime-deep:oklch(45% 0.15 135);--indigo:oklch(50% 0.2 275);--indigo-soft:oklch(94% 0.04 275);--peach:oklch(78% 0.12 55);--peach-soft:oklch(96% 0.03 55);--sky:oklch(70% 0.12 220);--sky-soft:oklch(95% 0.03 220);--bg:oklch(99% 0.003 135);--bg-alt:oklch(96.5% 0.008 135);--bg-dark:oklch(15% 0.025 275);--text:oklch(16% 0.012 275);--text-mid:oklch(38% 0.008 275);--text-light:oklch(55% 0.006 275);--text-on-dark:oklch(93% 0.005 275);--surface:oklch(99.5% 0.002 135);--border:oklch(92% 0.006 135);--font-display:'Playfair Display',serif;--font-body:'Space Grotesk',system-ui,sans-serif;--ease:cubic-bezier(0.16,1,0.3,1);--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-optical-sizing:auto}body{font-family:var(--font-body);font-size:1rem;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}h1,h2,h3{text-wrap:balance}p{text-wrap:pretty}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.9rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(16px);background:oklch(99% 0.003 135/0.88);border-bottom:1px solid var(--border)}.logo{font-family:var(--font-body);font-size:0.95rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.02em}.logo span{color:var(--lime)}.nav-links{display:flex;gap:1.25rem;list-style:none}.nav-links a{font-size:0.72rem;font-weight:500;color:var(--text-mid);text-decoration:none;letter-spacing:0.02em;transition:color 200ms}.nav-links a:hover{color:var(--indigo)}
+
+.hero{padding:8.5rem 2rem 4.5rem;max-width:1080px;margin:0 auto}.hero-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--lime-deep);margin-bottom:1rem;display:inline-flex;align-items:center;gap:0.4rem;background:var(--lime-soft);padding:0.4rem 0.9rem;border-radius:20px;opacity:0;transform:translateY(12px);animation:up 500ms var(--ease) 200ms forwards}.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,3.8rem);line-height:1.08;font-weight:400;margin-bottom:1.2rem;opacity:0;transform:translateY(18px);animation:up 500ms var(--ease) 300ms forwards}.hero h1 em{font-style:italic;color:var(--indigo)}.hero-summary{font-size:0.95rem;line-height:1.75;color:var(--text-mid);max-width:58ch;margin-bottom:1.5rem;opacity:0;transform:translateY(12px);animation:up 500ms var(--ease) 400ms forwards}.hero-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.6rem;opacity:0;transform:translateY(12px);animation:up 500ms var(--ease) 500ms forwards}.tag{font-size:0.66rem;font-weight:500;padding:0.3rem 0.6rem;border-radius:16px;transition:transform 180ms var(--ease);cursor:default}.tag:hover{transform:translateY(-2px) scale(1.03)}.tag--a{background:var(--lime-soft);color:var(--lime-deep)}.tag--b{background:var(--indigo-soft);color:var(--indigo)}.tag--c{background:var(--peach-soft);color:oklch(50% 0.12 55)}.tag--d{background:var(--sky-soft);color:oklch(42% 0.1 220)}.hero-cta{display:flex;gap:0.7rem;align-items:center;opacity:0;transform:translateY(12px);animation:up 500ms var(--ease) 600ms forwards}.btn{padding:0.7rem 1.4rem;font-size:0.8rem;font-weight:600;text-decoration:none;border-radius:24px;transition:transform 200ms var(--ease),box-shadow 200ms;display:inline-flex;align-items:center;gap:0.3rem}.btn:hover{transform:translateY(-2px)}.btn--primary{background:var(--indigo);color:oklch(97% 0.005 275);box-shadow:0 4px 16px oklch(50% 0.2 275/0.2)}.btn--primary:hover{box-shadow:0 8px 24px oklch(50% 0.2 275/0.3)}.btn--ghost{background:transparent;color:var(--text);border:1.5px solid var(--border)}.btn--ghost:hover{border-color:var(--lime);color:var(--lime-deep)}@keyframes up{to{opacity:1;transform:translateY(0)}}
+
+.logos{padding:2rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-alt)}.logos-inner{max-width:1080px;margin:0 auto;text-align:center}.logos-label{font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.75rem}.logos-row{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem 1.8rem}.logos-row span{font-size:0.78rem;font-weight:600;color:var(--text-light);opacity:0.75;transition:opacity 200ms,color 200ms}.logos-row span:hover{opacity:1;color:var(--indigo)}
+
+.stats{padding:2.5rem 2rem;background:var(--surface);border-bottom:1px solid var(--border)}.stats-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1.5rem}.stat{text-align:center;padding:1rem;border-radius:var(--r);transition:transform 200ms var(--ease)}.stat:hover{transform:translateY(-3px)}.stat-val{font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1;margin-bottom:0.2rem}.stat-val--lime{color:var(--lime-deep)}.stat-val--indigo{color:var(--indigo)}.stat-val--peach{color:oklch(55% 0.12 55)}.stat-val--sky{color:oklch(45% 0.12 220)}.stat-label{font-size:0.58rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-light)}
+
+section{padding:4.5rem 2rem;max-width:1080px;margin:0 auto}.full-w{max-width:100%}.sl{font-size:0.64rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--lime-deep);margin-bottom:0.4rem;display:flex;align-items:center;gap:0.35rem}.sh{font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,1.9rem);line-height:1.15;margin-bottom:0.35rem}.ss{font-size:0.82rem;color:var(--text-mid);margin-bottom:2.2rem;max-width:52ch}
+
+.narrative{background:linear-gradient(135deg,var(--indigo-soft),var(--lime-soft));border-radius:var(--r);padding:2.5rem;margin-bottom:3rem;position:relative;overflow:hidden}.narrative::after{content:'💊→📈→🚀';position:absolute;top:12px;right:20px;font-size:1.2rem;opacity:0.4}.narrative h3{font-family:var(--font-display);font-size:1.2rem;margin-bottom:0.5rem}.narrative p{font-size:0.82rem;line-height:1.7;color:var(--text-mid);max-width:58ch}.path-row{display:flex;gap:0.4rem;margin-top:1rem;flex-wrap:wrap;align-items:center}.path-chip{font-size:0.7rem;font-weight:600;padding:0.35rem 0.7rem;background:oklch(99% 0.003 135/0.85);border-radius:18px}.path-arr{color:var(--indigo);font-weight:700}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.why{padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);transition:transform 200ms var(--ease)}.why:hover{transform:translateY(-3px)}.why-icon{font-size:1.6rem;margin-bottom:0.5rem}.why h3{font-size:0.86rem;font-weight:600;margin-bottom:0.3rem}.why p{font-size:0.73rem;line-height:1.5;color:var(--text-mid)}
+
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}.fit-col h3{font-size:0.82rem;font-weight:600;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.3rem}.fit-col.yes h3{color:var(--lime-deep)}.fit-col.no h3{color:var(--text-light)}.fit-list{list-style:none;display:flex;flex-direction:column;gap:0.35rem}.fit-list li{font-size:0.74rem;color:var(--text-mid);padding:0.55rem 0.8rem;background:var(--bg-alt);border-radius:10px}
+
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.pstep{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;position:relative;overflow:hidden;transition:transform 200ms var(--ease)}.pstep:hover{transform:translateY(-3px)}.pstep-num{font-family:var(--font-display);font-size:2.5rem;color:var(--lime-soft);line-height:1;position:absolute;top:10px;right:14px;font-weight:600}.pstep h3{font-size:0.88rem;font-weight:600;margin-bottom:0.35rem}.pstep p{font-size:0.73rem;line-height:1.5;color:var(--text-mid);margin-bottom:0.5rem}.pstep-tags{font-size:0.62rem;color:var(--text-light)}
+
+/* VENTURES */
+.ventures-wrap{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.ventures-header{margin-bottom:1.5rem}
+.ventures-pipeline{display:flex;gap:0.3rem;margin-bottom:2rem;flex-wrap:wrap}
+.pipeline-step{font-size:0.6rem;font-weight:600;padding:0.3rem 0.7rem;border-radius:14px;background:var(--surface);border:1px solid var(--border);color:var(--text-mid);display:flex;align-items:center;gap:0.25rem}
+.pipeline-step.active{background:var(--lime-soft);color:var(--lime-deep);border-color:var(--lime)}
+.pipeline-arr{color:var(--text-light);font-size:0.7rem}
+.ventures-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.8rem}
+.venture{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;transition:transform 200ms var(--ease),box-shadow 200ms}
+.venture:hover{transform:translateY(-3px);box-shadow:0 8px 24px oklch(16% 0.012 275/0.05)}
+.venture-top{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem}
+.venture-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.venture-icon--health{background:oklch(92% 0.04 185);color:oklch(45% 0.15 185)}
+.venture-icon--lifestyle{background:oklch(92% 0.04 55);color:oklch(50% 0.15 55)}
+.venture-icon--social{background:oklch(92% 0.04 275);color:oklch(45% 0.15 275)}
+.venture-icon--creator{background:oklch(92% 0.04 330);color:oklch(45% 0.15 330)}
+.venture-icon--travel{background:oklch(92% 0.04 135);color:oklch(40% 0.15 135)}
+.venture-icon--career{background:oklch(92% 0.04 220);color:oklch(42% 0.12 220)}
+.venture-icon--proptech{background:oklch(92% 0.04 25);color:oklch(48% 0.12 25)}
+.venture-name{font-size:0.82rem;font-weight:600}
+.venture-desc{font-size:0.68rem;line-height:1.5;color:var(--text-mid);margin-bottom:0.5rem}
+.venture-tags{display:flex;flex-wrap:wrap;gap:0.2rem}
+.venture-tag{font-size:0.56rem;font-weight:500;padding:0.12rem 0.35rem;background:var(--bg-alt);border-radius:8px;color:var(--text-light)}
+.ventures-note{font-size:0.72rem;color:var(--text-mid);margin-top:1.5rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;line-height:1.6}
+
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.1rem}.case{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;display:flex;flex-direction:column;transition:transform 250ms var(--ease),box-shadow 250ms}.case:hover{transform:translateY(-4px);box-shadow:0 12px 32px oklch(16% 0.012 275/0.06)}.case-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.4rem;gap:0.4rem}.case-name{font-family:var(--font-display);font-size:1.05rem}.case-badge{font-size:0.56rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;padding:0.2rem 0.45rem;border-radius:12px;white-space:nowrap}.case-badge--a{background:var(--lime-soft);color:var(--lime-deep)}.case-badge--b{background:var(--indigo-soft);color:var(--indigo)}.case-badge--c{background:var(--peach-soft);color:oklch(50% 0.12 55)}.case-badge--d{background:var(--sky-soft);color:oklch(42% 0.1 220)}.case-desc{font-size:0.73rem;line-height:1.55;color:var(--text-mid);margin-bottom:0.7rem;flex:1}.case-metrics{display:grid;grid-template-columns:1fr 1fr;gap:0.3rem;margin-bottom:0.6rem}.cm{padding:0.4rem 0.5rem;background:var(--bg-alt);border-radius:8px}.cm-v{font-size:0.88rem;font-weight:700;color:var(--lime-deep);font-feature-settings:'tnum'}.cm-l{font-size:0.52rem;font-weight:500;color:var(--text-light);letter-spacing:0.03em;text-transform:uppercase}.case-skills{display:flex;flex-wrap:wrap;gap:0.2rem;padding-top:0.5rem;border-top:1px solid var(--border)}.cs{font-size:0.6rem;font-weight:500;padding:0.15rem 0.38rem;background:var(--bg-alt);color:var(--text-light);border-radius:8px}
+
+.systems-wrap{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}.systems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}.sys{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:transform 200ms var(--ease)}.sys:hover{transform:translateY(-3px)}.sys-icon{font-size:1.5rem;margin-bottom:0.5rem}.sys h3{font-size:0.86rem;font-weight:600;margin-bottom:0.25rem}.sys p{font-size:0.72rem;line-height:1.5;color:var(--text-mid);margin-bottom:0.5rem}.sys-features{list-style:none;display:flex;flex-direction:column;gap:0.18rem}.sys-features li{font-size:0.68rem;color:var(--text-light);padding-left:0.8rem;position:relative}.sys-features li::before{content:'→';position:absolute;left:0;color:var(--lime);font-size:0.7rem}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:0.75rem}.gallery-item{border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;transition:transform 250ms var(--ease),box-shadow 250ms}.gallery-item:hover{transform:translateY(-4px);box-shadow:0 12px 32px oklch(16% 0.012 275/0.08)}.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 400ms var(--ease)}.gallery-item:hover img{transform:scale(1.04)}.gallery-item .overlay{position:absolute;inset:0;background:linear-gradient(to top,oklch(14% 0.02 275/0.75) 0%,transparent 50%);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity 250ms var(--ease)}.gallery-item:hover .overlay{opacity:1}.overlay-text{color:oklch(95% 0.005 275)}.overlay-text h4{font-size:0.82rem;font-weight:600;margin-bottom:0.1rem}.overlay-text p{font-size:0.65rem;opacity:0.8}.gallery-item.tall{grid-row:span 2}.gallery-item.wide{grid-column:span 2}
+
+.test-wrap{background:var(--bg-dark);padding:4.5rem 2rem;color:var(--text-on-dark)}.test-inner{max-width:1080px;margin:0 auto}.test-wrap .sl{color:var(--lime)}.test-wrap .sh{color:var(--text-on-dark);margin-bottom:1.5rem}.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}.tc{background:oklch(20% 0.018 275);border:1px solid oklch(28% 0.012 275);border-radius:var(--r);padding:1.3rem}.tc-q{font-size:0.77rem;line-height:1.6;color:oklch(78% 0.005 275);margin-bottom:0.7rem;font-style:italic}.tc-a{font-size:0.72rem;font-weight:600;color:var(--text-on-dark)}.tc-r{font-size:0.63rem;color:oklch(58% 0.005 275)}
+
+.exp-list{display:flex;flex-direction:column;gap:1.5rem}.exp-item{display:grid;grid-template-columns:135px 1fr;gap:1.25rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}.exp-item:last-child{border-bottom:none;padding-bottom:0}.exp-date{font-size:0.72rem;color:var(--text-light);font-weight:500}.exp-body h3{font-family:var(--font-display);font-size:1.05rem;margin-bottom:0.1rem}.exp-co{font-size:0.76rem;color:var(--text-mid);margin-bottom:0.4rem}.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.18rem}.exp-bullets li{font-size:0.73rem;line-height:1.5;color:var(--text-mid);padding-left:0.85rem;position:relative}.exp-bullets li::before{content:'✦';position:absolute;left:0;top:0.15em;font-size:0.55rem;color:var(--lime)}.exp-bullets li strong{color:var(--text);font-weight:500}.certs{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.7rem}.cert{font-size:0.66rem;font-weight:500;padding:0.3rem 0.6rem;background:var(--lime-soft);color:var(--lime-deep);border-radius:14px}
+
+.faq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:0.8rem}.faq-item{padding:1.3rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r)}.faq-q{font-size:0.8rem;font-weight:600;margin-bottom:0.3rem}.faq-a{font-size:0.72rem;line-height:1.55;color:var(--text-mid)}
+
+.contact{text-align:center;padding:5rem 2rem}.contact .sh{margin-bottom:0.35rem}.contact-sub{font-size:0.85rem;color:var(--text-mid);margin-bottom:1.75rem}.contact-row{display:flex;justify-content:center;gap:0.6rem;flex-wrap:wrap}.contact-link{font-size:0.78rem;font-weight:500;color:var(--text);text-decoration:none;padding:0.6rem 1.1rem;border:1.5px solid var(--border);border-radius:20px;transition:all 200ms var(--ease)}.contact-link:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-2px)}
+
+footer{padding:1.25rem 2rem;text-align:center;font-size:0.64rem;color:var(--text-light);border-top:1px solid var(--border)}
+
+@media(max-width:768px){nav{padding:0.75rem 1.25rem}.nav-links{display:none}.hero{padding:6.5rem 1.5rem 2.5rem}section{padding:3.5rem 1.5rem}.cases-grid,.systems-grid,.test-grid,.why-grid,.process-grid,.faq-grid,.ventures-grid{grid-template-columns:1fr}.exp-item{grid-template-columns:1fr;gap:0.25rem}.hero-cta{flex-direction:column;align-items:flex-start}.fit-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}.gallery-item.tall{grid-row:span 1}.gallery-item.wide{grid-column:span 1}}
+@media(max-width:480px){.stats-inner{grid-template-columns:repeat(2,1fr);gap:1rem}.gallery-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">kerolos<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#ventures">Ventures</a></li>
+    <li><a href="#systems">Systems</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">🚀 Head of Growth & Marketing</p>
+  <h1>I build <em>growth systems</em> that compound, not campaigns that expire.</h1>
+  <p class="hero-summary">Full-spectrum growth leader blending brand, performance, lifecycle, AI automation, and product thinking. 5+ years scaling 12+ brands, 20+ products taken from market research to GTM. I architect the infrastructure, lead the team, and deploy intelligent systems that turn ideas into scalable businesses.</p>
+  <div class="hero-tags">
+    <span class="tag tag--a">Growth Architecture</span>
+    <span class="tag tag--b">Performance Marketing</span>
+    <span class="tag tag--a">Market Research → GTM</span>
+    <span class="tag tag--c">AI-Powered Automation</span>
+    <span class="tag tag--d">Product Strategy</span>
+    <span class="tag tag--b">Content Strategy</span>
+    <span class="tag tag--a">Lifecycle & CRM</span>
+    <span class="tag tag--c">UGC & Influencer</span>
+    <span class="tag tag--d">Creative Direction</span>
+    <span class="tag tag--b">Product-Led Growth</span>
+    <span class="tag tag--a">Analytics & BI</span>
+    <span class="tag tag--c">Team Leadership</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#contact" class="btn btn--primary">Get in Touch ☕</a>
+    <a href="#work" class="btn btn--ghost">View Case Studies →</a>
+  </div>
+</section>
+
+<div class="logos"><div class="logos-inner"><p class="logos-label">Brands I've Grown</p><div class="logos-row"><span>Ahalia Hospital</span><span>Millennium Hotels</span><span>Globemed</span><span>Conkai</span><span>Khareeta</span><span>Ravemade</span><span>Revult</span><span>Samir Gold</span><span>Forsan Mall</span><span>Jebel Hafit</span><span>Al Ain Square</span><span>Agency Helix</span></div></div></div>
+
+<div class="stats"><div class="stats-inner">
+  <div class="stat"><div class="stat-val stat-val--lime">20+</div><div class="stat-label">Products Built</div></div>
+  <div class="stat"><div class="stat-val stat-val--indigo">+153%</div><div class="stat-label">Avg. Growth</div></div>
+  <div class="stat"><div class="stat-val stat-val--peach">6.8x</div><div class="stat-label">Best ROAS</div></div>
+  <div class="stat"><div class="stat-val stat-val--sky">$500K+</div><div class="stat-label">Media Managed</div></div>
+  <div class="stat"><div class="stat-val stat-val--lime">4.6M+</div><div class="stat-label">Impressions</div></div>
+  <div class="stat"><div class="stat-val stat-val--indigo">14</div><div class="stat-label">Volumes Authored</div></div>
+</div></div>
+
+<section>
+  <div class="narrative">
+    <h3>Pharmacist → MBA → Growth Architect → Product Builder</h3>
+    <p>I don't just market products. I conceive, research, validate, and launch them. 20+ digital products taken through the full lifecycle: market research, positioning, branding, GTM strategy, and growth engineering. From health tech to lifestyle to creator economy.</p>
+    <div class="path-row">
+      <span class="path-chip">🔬 Research</span><span class="path-arr">→</span>
+      <span class="path-chip">🎯 Positioning</span><span class="path-arr">→</span>
+      <span class="path-chip">🎨 Branding</span><span class="path-arr">→</span>
+      <span class="path-chip">🚀 GTM</span><span class="path-arr">→</span>
+      <span class="path-chip">📈 Growth</span>
+    </div>
+  </div>
+
+  <p class="sl">✨ Why Choose Me</p>
+  <h2 class="sh">What makes this different</h2>
+  <p class="ss">I don't just execute marketing. I build entire products and businesses from zero, then scale them.</p>
+  <div class="why-grid">
+    <div class="why"><div class="why-icon">🧪</div><h3>Full Product Lifecycle</h3><p>From market research and validation through branding, GTM strategy, launch, and growth. 20+ products shipped from concept to market.</p></div>
+    <div class="why"><div class="why-icon">🤖</div><h3>AI-Native Thinking</h3><p>I design agentic automation, predictive creative testing, and intelligent lifecycle flows. Architecting systems, not just using tools.</p></div>
+    <div class="why"><div class="why-icon">👥</div><h3>Team & Cross-Functional Leadership</h3><p>I build and lead marketing teams, coordinate with product and engineering, and align stakeholders around growth objectives.</p></div>
+  </div>
+
+  <div class="fit-grid">
+    <div class="fit-col yes"><h3>✅ Great fit if...</h3><ul class="fit-list"><li>You need someone who can take a product from zero to one</li><li>You want a systems builder, not just a campaign runner</li><li>You need full-stack: research, brand, GTM, performance, growth</li><li>You care about sustainable, compounding growth</li></ul></div>
+    <div class="fit-col no"><h3>🚫 Not for you if...</h3><ul class="fit-list"><li>You want vanity metrics without underlying strategy</li><li>You need one-off posting without a growth system</li><li>You're not open to data-driven iteration</li><li>You can't commit to a structured, long-term process</li></ul></div>
+  </div>
+</section>
+
+<!-- PRODUCT VENTURES -->
+<div id="ventures" class="full-w ventures-wrap">
+<section>
+  <p class="sl">🧬 Product Lab</p>
+  <h2 class="sh">20+ products: research → GTM → growth</h2>
+  <p class="ss">Each product taken through the complete lifecycle. Market research, competitive analysis, positioning, branding, go-to-market strategy, and growth engineering.</p>
+
+  <div class="ventures-pipeline">
+    <span class="pipeline-step active">🔬 Market Research</span>
+    <span class="pipeline-arr">→</span>
+    <span class="pipeline-step active">📊 Competitive Analysis</span>
+    <span class="pipeline-arr">→</span>
+    <span class="pipeline-step active">🎯 Positioning</span>
+    <span class="pipeline-arr">→</span>
+    <span class="pipeline-step active">🎨 Branding</span>
+    <span class="pipeline-arr">→</span>
+    <span class="pipeline-step active">🚀 Go-to-Market</span>
+    <span class="pipeline-arr">→</span>
+    <span class="pipeline-step active">📈 Growth</span>
+  </div>
+
+  <div class="ventures-grid">
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--health">🧬</div><span class="venture-name">NUVA</span></div>
+      <p class="venture-desc">AI-powered, hyper-personalized health companion. Integrates medical data with predictive AI for chronic disease management.</p>
+      <div class="venture-tags"><span class="venture-tag">HealthTech</span><span class="venture-tag">AI</span><span class="venture-tag">Egypt-First</span><span class="venture-tag">PLG</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--health">💚</div><span class="venture-name">VitalSync AI</span></div>
+      <p class="venture-desc">All-in-one health management ecosystem using predictive AI for preventive care and wellness tracking.</p>
+      <div class="venture-tags"><span class="venture-tag">HealthTech</span><span class="venture-tag">Predictive AI</span><span class="venture-tag">Wellness</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--health">🧘</div><span class="venture-name">SAND</span></div>
+      <p class="venture-desc">Personalized AI wellness companion that helps you understand your body, set goals, and track holistic health.</p>
+      <div class="venture-tags"><span class="venture-tag">Wellness</span><span class="venture-tag">AI Companion</span><span class="venture-tag">Personalization</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--health">👶</div><span class="venture-name">CareSync</span></div>
+      <p class="venture-desc">Discover, verify, and schedule professional caregivers. Trust-first marketplace for family care services.</p>
+      <div class="venture-tags"><span class="venture-tag">Marketplace</span><span class="venture-tag">Healthcare</span><span class="venture-tag">Trust</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--social">💜</div><span class="venture-name">KinCare Connect</span></div>
+      <p class="venture-desc">Connecting families and small businesses with compassionate, professional care services.</p>
+      <div class="venture-tags"><span class="venture-tag">Family</span><span class="venture-tag">Care</span><span class="venture-tag">Marketplace</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--lifestyle">☀️</div><span class="venture-name">Hayat</span></div>
+      <p class="venture-desc">Premium subscription for Egypt's best lifestyle experiences: fitness, dining, wellness, entertainment.</p>
+      <div class="venture-tags"><span class="venture-tag">Subscription</span><span class="venture-tag">Lifestyle</span><span class="venture-tag">Egypt</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--lifestyle">⚡</div><span class="venture-name">OnePass Egypt</span></div>
+      <p class="venture-desc">Single unlimited subscription for fitness, dining, entertainment, and leisure across Egypt.</p>
+      <div class="venture-tags"><span class="venture-tag">Subscription</span><span class="venture-tag">All-Access</span><span class="venture-tag">Aggregator</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--lifestyle">🏋️</div><span class="venture-name">OmniFit Egypt</span></div>
+      <p class="venture-desc">All-in-one membership for fitness, sports, leisure, and productivity services nationwide.</p>
+      <div class="venture-tags"><span class="venture-tag">Fitness</span><span class="venture-tag">Membership</span><span class="venture-tag">Aggregator</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--lifestyle">🦅</div><span class="venture-name">Egypt Pass</span></div>
+      <p class="venture-desc">All-in-one lifestyle membership unlocking exclusive access to Egypt's premium experiences.</p>
+      <div class="venture-tags"><span class="venture-tag">Membership</span><span class="venture-tag">Lifestyle</span><span class="venture-tag">Premium</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--travel">🏜️</div><span class="venture-name">Egex</span></div>
+      <p class="venture-desc">Egyptian discovery companion. Hidden desert gems, off-the-beaten-path adventures, and local experiences.</p>
+      <div class="venture-tags"><span class="venture-tag">Travel</span><span class="venture-tag">Discovery</span><span class="venture-tag">Egypt</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--travel">🌙</div><span class="venture-name">NIGHTEGYPT</span></div>
+      <p class="venture-desc">Your go-to hub for discovering parties, concerts, and nightlife events across Egypt.</p>
+      <div class="venture-tags"><span class="venture-tag">Events</span><span class="venture-tag">Nightlife</span><span class="venture-tag">Discovery</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--travel">🪷</div><span class="venture-name">NilePulse</span></div>
+      <p class="venture-desc">Digital companion for exploring the wonders of Egypt. Tourism, culture, and local guides.</p>
+      <div class="venture-tags"><span class="venture-tag">Tourism</span><span class="venture-tag">Culture</span><span class="venture-tag">Egypt</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--social">🤝</div><span class="venture-name">Kinship</span></div>
+      <p class="venture-desc">Find and connect with local friends who share your passion for running, gaming, and more.</p>
+      <div class="venture-tags"><span class="venture-tag">Social</span><span class="venture-tag">Community</span><span class="venture-tag">Interest-Based</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--creator">🌸</div><span class="venture-name">Nawwar</span></div>
+      <p class="venture-desc">All-in-one ecosystem for Egyptian creators to monetize expertise, build audiences, and scale.</p>
+      <div class="venture-tags"><span class="venture-tag">Creator Economy</span><span class="venture-tag">Monetization</span><span class="venture-tag">Egypt</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--creator">🔺</div><span class="venture-name">UGC Hub</span></div>
+      <p class="venture-desc">Professional ecosystem for Middle Eastern brands and creative talent to collaborate on UGC.</p>
+      <div class="venture-tags"><span class="venture-tag">UGC</span><span class="venture-tag">Marketplace</span><span class="venture-tag">MENA</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--career">🔄</div><span class="venture-name">SecondStart</span></div>
+      <p class="venture-desc">Empowering platform for professionals 40+ to discover new career paths and master new skills.</p>
+      <div class="venture-tags"><span class="venture-tag">Career</span><span class="venture-tag">EdTech</span><span class="venture-tag">40+</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--career">🚀</div><span class="venture-name">KidoCareer Academy</span></div>
+      <p class="venture-desc">Career discovery and skill-building platform designed for kids and young learners.</p>
+      <div class="venture-tags"><span class="venture-tag">EdTech</span><span class="venture-tag">Kids</span><span class="venture-tag">Career</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--proptech">🌍</div><span class="venture-name">FounderConnect</span></div>
+      <p class="venture-desc">Global network connecting founders for collaboration, mentorship, and co-building opportunities.</p>
+      <div class="venture-tags"><span class="venture-tag">Network</span><span class="venture-tag">Founders</span><span class="venture-tag">Global</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--creator">✍️</div><span class="venture-name">Author</span></div>
+      <p class="venture-desc">The operating system for modern marketers. Unifying professional tools, workflows, and growth resources.</p>
+      <div class="venture-tags"><span class="venture-tag">MarTech</span><span class="venture-tag">SaaS</span><span class="venture-tag">Productivity</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--lifestyle">🌿</div><span class="venture-name">EcoHustle</span></div>
+      <p class="venture-desc">Turn green habits into green cash. Earn points for eco-friendly actions, compete, and redeem rewards.</p>
+      <div class="venture-tags"><span class="venture-tag">Sustainability</span><span class="venture-tag">Gamification</span><span class="venture-tag">Rewards</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--proptech">💡</div><span class="venture-name">Conkai</span></div>
+      <p class="venture-desc">E-commerce brand scaled from zero to profitability with full growth system ownership.</p>
+      <div class="venture-tags"><span class="venture-tag">E-Commerce</span><span class="venture-tag">DTC</span><span class="venture-tag">Scaled</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--social">🔗</div><span class="venture-name">Nexus</span></div>
+      <p class="venture-desc">Professional networking platform designed for meaningful, high-signal connections.</p>
+      <div class="venture-tags"><span class="venture-tag">Networking</span><span class="venture-tag">Professional</span><span class="venture-tag">Community</span></div>
+    </div>
+    <div class="venture">
+      <div class="venture-top"><div class="venture-icon venture-icon--health">🪄</div><span class="venture-name">مساعدي (Musaa'edi)</span></div>
+      <p class="venture-desc">AI-powered personal assistant for Arabic speakers. Productivity, scheduling, and smart task management.</p>
+      <div class="venture-tags"><span class="venture-tag">AI Assistant</span><span class="venture-tag">Arabic</span><span class="venture-tag">Productivity</span></div>
+    </div>
+  </div>
+
+  <div class="ventures-note">
+    <strong>Each product includes:</strong> Market sizing, competitive landscape, user personas, positioning strategy, brand identity, GTM playbook, channel strategy, growth model, KPI framework, and scaling roadmap. This is not ideation: it's full strategic execution from research to growth.
+  </div>
+</section>
+</div>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <p class="sl">🏆 Proven Results</p>
+  <h2 class="sh">Growth I've engineered (live brands)</h2>
+  <p class="ss">Case studies with real, measurable outcomes.</p>
+  <div class="cases-grid">
+    <div class="case"><div class="case-top"><span class="case-name">Khareeta</span><span class="case-badge case-badge--a">Product Growth</span></div><p class="case-desc">Led cross-functional team to scale mapping platform from zero to 480K users with acquisition loops and activation funnels.</p><div class="case-metrics"><div class="cm"><div class="cm-v">480K</div><div class="cm-l">Users</div></div><div class="cm"><div class="cm-v">6.8x</div><div class="cm-l">ROAS</div></div><div class="cm"><div class="cm-v">+312%</div><div class="cm-l">Engagement</div></div><div class="cm"><div class="cm-v">p&lt;0.01</div><div class="cm-l">Rigor</div></div></div><div class="case-skills"><span class="cs">Meta Ads</span><span class="cs">Google Ads</span><span class="cs">A/B Testing</span><span class="cs">AI Automation</span></div></div>
+    <div class="case"><div class="case-top"><span class="case-name">Ahalia Hospital</span><span class="case-badge case-badge--b">Healthcare</span></div><p class="case-desc">Directed marketing team. Built omnichannel system: local SEO, paid media, community, and patient lifecycle automation.</p><div class="case-metrics"><div class="cm"><div class="cm-v">+153%</div><div class="cm-l">Acquisition</div></div><div class="cm"><div class="cm-v">4.6M</div><div class="cm-l">Impressions</div></div><div class="cm"><div class="cm-v">3.2x</div><div class="cm-l">ROAS</div></div><div class="cm"><div class="cm-v">+89%</div><div class="cm-l">Organic</div></div></div><div class="case-skills"><span class="cs">Team Leadership</span><span class="cs">Local SEO</span><span class="cs">CRM</span><span class="cs">Events</span></div></div>
+    <div class="case"><div class="case-top"><span class="case-name">Millennium Hotels</span><span class="case-badge case-badge--c">Hospitality</span></div><p class="case-desc">Full-stack digital growth across luxury properties. Automated guest lifecycle, paid campaigns, brand content.</p><div class="case-metrics"><div class="cm"><div class="cm-v">+210%</div><div class="cm-l">Bookings</div></div><div class="cm"><div class="cm-v">4.1x</div><div class="cm-l">ROAS</div></div><div class="cm"><div class="cm-v">-38%</div><div class="cm-l">CAC</div></div><div class="cm"><div class="cm-v">+67%</div><div class="cm-l">Email Rev</div></div></div><div class="case-skills"><span class="cs">Paid Media</span><span class="cs">Email Flows</span><span class="cs">Creative</span><span class="cs">Photography</span></div></div>
+    <div class="case"><div class="case-top"><span class="case-name">Conkai / Revult</span><span class="case-badge case-badge--d">E-Commerce</span></div><p class="case-desc">Scaled DTC brands from launch to profitability. Creative production, paid acquisition, lifecycle, retention.</p><div class="case-metrics"><div class="cm"><div class="cm-v">5.4x</div><div class="cm-l">ROAS</div></div><div class="cm"><div class="cm-v">+180%</div><div class="cm-l">Revenue</div></div><div class="cm"><div class="cm-v">+92%</div><div class="cm-l">Repeat</div></div><div class="cm"><div class="cm-v">$500K+</div><div class="cm-l">Media</div></div></div><div class="case-skills"><span class="cs">Shopify</span><span class="cs">Klaviyo</span><span class="cs">Meta Ads</span><span class="cs">UGC</span></div></div>
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<div id="systems" class="full-w systems-wrap">
+<section>
+  <p class="sl">🛠️ Systems I Build</p>
+  <h2 class="sh">AI-powered growth infrastructure</h2>
+  <p class="ss">Compounding machines that get smarter over time.</p>
+  <div class="systems-grid">
+    <div class="sys"><div class="sys-icon">🤖</div><h3>Intelligent Acquisition</h3><p>AI-driven creative testing, automated bid optimization, predictive audience modeling.</p><ul class="sys-features"><li>Automated creative variants</li><li>Predictive budget allocation</li><li>Multi-touch attribution</li></ul></div>
+    <div class="sys"><div class="sys-icon">💌</div><h3>Lifecycle Automation</h3><p>Behavior-triggered journeys, predictive send-time, dynamic segmentation.</p><ul class="sys-features"><li>AI-personalized sequences</li><li>Churn risk scoring</li><li>Cross-channel orchestration</li></ul></div>
+    <div class="sys"><div class="sys-icon">📡</div><h3>Content & Distribution</h3><p>Programmatic production, SEO-optimized publishing, AI-assisted creative.</p><ul class="sys-features"><li>AI content briefs</li><li>Multi-format repurposing</li><li>Performance scoring</li></ul></div>
+    <div class="sys"><div class="sys-icon">📊</div><h3>Analytics & Intelligence</h3><p>Unified dashboards, custom attribution, AI-generated insights.</p><ul class="sys-features"><li>Custom MMM</li><li>Experiment velocity tracking</li><li>Revenue forecasting</li></ul></div>
+  </div>
+</section>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <p class="sl">📸 Visual Proof</p>
+  <h2 class="sh">Behind the scenes</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item tall"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/97355ee1-2f49-42e1-adb5-3a4e7b5a04fe/2e78b281-06ce-484b-b2c7-fd0e915c731d.jpg\" alt="Fashion editorial"><div class="overlay"><div class="overlay-text"><h4>Creative Direction</h4><p>High-fashion editorial</p></div></div></div>
+    <div class="gallery-item"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/68a02ec1-b6dc-4e1a-b4db-0f601994b6d3/desktop%20(7).webp" alt="Analytics Hub"><div class="overlay"><div class="overlay-text"><h4>Analytics & BI</h4><p>Social Media Analytics</p></div></div></div>
+    <div class="gallery-item"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/4506a2f9-26d2-47c1-b36f-020f3d2e1e51/desktop%20(7).webp" alt="UGC Tracker"><div class="overlay"><div class="overlay-text"><h4>UGC & Influencer</h4><p>Creator pitch system</p></div></div></div>
+    <div class="gallery-item"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/9019f68b-7d10-449c-b362-db9ae668f62a/geometric-colorful-social-media-marketing-proposal-template_742173-7149.avif\" alt="Product Photography"><div class="overlay"><div class="overlay-text"><h4>Product Photography</h4><p>Streetwear lookbook</p></div></div></div>
+    <div class="gallery-item wide"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/4850e5fb-3ca1-4d04-a17f-3cfb82156a83/Marketing-Portfolio-Websites-Example-Hive-Creative-Group-All-Projects.png\" alt="Brand Photography"><div class="overlay"><div class="overlay-text"><h4>Brand Photography</h4><p>Agricultural luxury</p></div></div></div>
+    <div class="gallery-item"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/b7c15731-77e2-4092-8fd9-77aae706bb99/desktop%20(6).webp" alt="Email Marketing"><div class="overlay"><div class="overlay-text"><h4>Lifecycle & Email</h4><p>Campaign automation</p></div></div></div>
+    <div class="gallery-item"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/6f6d743b-c643-42fc-b9fa-a97db01516b7/desktop%20(5).webp" alt="Content Planner"><div class="overlay"><div class="overlay-text"><h4>Content Systems</h4><p>Multi-platform planner</p></div></div></div>
+    <div class="gallery-item"><img src="https://t90121172450.p.clickup-attachments.com/t90121172450/8fa3f1e4-4629-476a-9a1f-98ca9d1cc4e7/desktop%20(4).webp" alt="Dashboards"><div class="overlay"><div class="overlay-text"><h4>Growth Dashboards</h4><p>Performance tracking</p></div></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div id="proof" class="test-wrap">
+<div class="test-inner">
+  <p class="sl">💬 Testimonials</p>
+  <h2 class="sh">From clients and collaborators</h2>
+  <div class="test-grid">
+    <div class="tc"><p class="tc-q">"Kerolos doesn't just run campaigns. He builds entire growth machines. The systems kept performing long after the project ended."</p><p class="tc-a">Operations Director</p><p class="tc-r">Healthcare Group, UAE</p></div>
+    <div class="tc"><p class="tc-q">"He brought structure, data discipline, and creative instinct in equal measure. Thinks like an engineer, creates like an artist."</p><p class="tc-a">Founder & CEO</p><p class="tc-r">E-Commerce Brand</p></div>
+    <div class="tc"><p class="tc-q">"The AI automation workflows he designed cut our manual work by 60% while improving conversion rates."</p><p class="tc-a">Marketing Manager</p><p class="tc-r">Hospitality Group</p></div>
+  </div>
+</div>
+</div>
+
+<!-- EXPERIENCE -->
+<section>
+  <p class="sl">🗂️ Experience</p>
+  <h2 class="sh">The journey</h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">2022 — Present</div>
+      <div class="exp-body">
+        <h3>Head of Growth & Marketing / Product Builder</h3>
+        <p class="exp-co">Agency Helix / Independent</p>
+        <ul class="exp-bullets">
+          <li><strong>Conceptualized, researched, and launched 20+ digital products</strong> from market research through GTM and growth</li>
+          <li><strong>Led cross-functional teams</strong> across 12+ live projects in healthcare, hospitality, e-commerce, and tech</li>
+          <li><strong>Managed $500K+ in media</strong> with 3-7x ROAS across Meta, Google, TikTok</li>
+          <li><strong>Built AI-powered systems</strong>: predictive creative testing, automated lifecycle flows, intelligent reporting</li>
+          <li><strong>Authored 14-volume Marketing Leadership Masterbook</strong> (2,500+ pages) for training future CMOs</li>
+        </ul>
+        <div class="certs"><span class="cert">Meta Blueprint</span><span class="cert">Google Analytics</span><span class="cert">HubSpot Inbound</span><span class="cert">Braze Certified</span></div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">2020 — 2022</div>
+      <div class="exp-body">
+        <h3>Growth Marketing Manager</h3>
+        <p class="exp-co">E-Commerce & Consumer Brands</p>
+        <ul class="exp-bullets">
+          <li><strong>Scaled DTC brands</strong> from launch to profitability with full P&L ownership</li>
+          <li><strong>Built lifecycle email programs</strong> driving 30-40% of total revenue</li>
+          <li><strong>Managed performance marketing</strong> with sub-$12 CAC across competitive verticals</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Education</div>
+      <div class="exp-body">
+        <h3>MBA + B.Pharm</h3>
+        <p class="exp-co">American University (MBA) · Ahram Canadian University (B.Pharm)</p>
+        <ul class="exp-bullets">
+          <li><strong>MBA</strong>: Strategic management, marketing analytics, financial modeling</li>
+          <li><strong>B.Pharm</strong>: Scientific method, healthcare expertise, statistical analysis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <p class="sl">❓ FAQ</p>
+  <h2 class="sh">Quick answers</h2>
+  <div class="faq-grid">
+    <div class="faq-item"><p class="faq-q">What's the Product Lab?</p><p class="faq-a">20+ products I've taken from market research through go-to-market. Each includes competitive analysis, positioning, branding, GTM playbook, channel strategy, and growth model. It's proof I think at the product level, not just the channel level.</p></div>
+    <div class="faq-item"><p class="faq-q">Do you work fractional or full-time?</p><p class="faq-a">Both. For the right company, I go all-in. For others, I build the system and step back once it's self-sustaining.</p></div>
+    <div class="faq-item"><p class="faq-q">What industries?</p><p class="faq-a">HealthTech, lifestyle, creator economy, PropTech, e-commerce, and hospitality. The growth systems transfer across all of them.</p></div>
+    <div class="faq-item"><p class="faq-q">How do you use AI?</p><p class="faq-a">I design agentic workflows for creative testing, predictive audience modeling, automated reporting, and intelligent lifecycle orchestration. I architect systems around AI.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="sh">Let's build something that compounds 🌱</h2>
+  <p class="contact-sub">Open to full-time leadership, fractional engagements, co-founding, and advisory.</p>
+  <div class="contact-row">
+    <a href="mailto:dr.kerolosshenoda@gmail.com" class="contact-link">📧 Email</a>
+    <a href="#" class="contact-link">💼 LinkedIn</a>
+    <a href="#" class="contact-link">📸 Instagram</a>
+    <a href="#" class="contact-link">🐦 Twitter</a>
+  </div>
+</section>
+
+<footer>© 2026 Kerolos Shenoda. Growth architect based in Cairo, Egypt.</footer>
+
+</body>
+</html>
